@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game">
+        <video loop id="startVideo" class="startVideo" src="./video/Иваныч.mp4" hidden >
+<!--            <source src="./video/TestMachine.mp4" type="video/mp4">-->
+        </video>
+
+        <!--стартовая кнопка-->
+        <button type="button" id="buttonId" class="startButtonStyle">Начать игру</button>
+
+        <!--задний фон диалога-->
+        <div class="container" id="container" hidden="true">
+        <!--Текстовое поле-->
+            <div class="textContainer">
+                <span id="nameId" class="nameStyle"></span>
+                <div id="textId" class="textStyle" hidden="true"></div>
+            </div>
+        </div>
+        <!--Кнопки выбора-->
+        <div class="buttons">
+            <div class="button__item">
+                <button class="buttonStyle" type="button" id="buttonId2" hidden="true"></button>
+            </div>
+            <div class="button__item">
+                <button class="buttonStyle2" type="button" id="buttonId3" hidden="true"></button>
+            </div>
+            <div class="button__item">
+                <button class="buttonStyle3" type="button" id="buttonId4" hidden="true"></button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>

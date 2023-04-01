@@ -1,0 +1,255 @@
+@font-face {
+    font-family: "Undertale";
+    src: url("./fonts/Undertale-Battle-Font.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body{
+    background: url("./img/Тени.png") no-repeat center center fixed; /*Стартовое изображение*/
+    background-size: cover;
+    margin: 0;
+    -webkit-transition: background 1s ease; /*1 секунда - это скорость смены заднего фона*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+#game {
+    width:  100vw;
+    height: 100vh;
+}
+
+
+.startVideo {
+    position: fixed;
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    animation: ani 1s forwards;
+}
+
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.startButtonStyle {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+
+
+    width: 500px;
+    height: 60px;
+
+    position: absolute;/* центрирование текста */
+    top: 28%;
+    left: 0;
+    right: 30%;
+    margin: 0 auto;
+    transform: translate(0,-60%);
+    font-family: "Undertale";
+
+    background-color: transparent; /*убрать фон кнопки*/
+    border:none; /*убрать границу кнопки*/
+    color: #a3ad54;
+
+    text-shadow: 4px 0px 0px #323c39,-3px 0px 0px #99e550;
+}
+
+.container {
+     background: url("./img/textArea.png") no-repeat center;
+    background-size: cover;
+    /* это будет изображение, если надо, размер где-то 200 на 600
+
+    есть небольшая проблема с тем, что фоновое изображение в такой верстке
+   будет отображаться по разному на разных экранах и съедать пиксели по краям(я не успел решить это проблему. Если тебе не нужно это окно
+   и ты будешь рисовать на самих артах, то в js просто сделай windowText.hidden = true и все)*/
+    width: 1920px;
+    height: 320px;
+    margin: 0 auto;
+
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation-duration: 2s;
+
+}
+
+.startButtonStyle:hover{ /*hover - это то, что будет происходить с кнопкой при наведении*/
+    color: #99e550;
+    font-size: 44px;
+}
+
+.textContainer{
+    width: 1600px;
+    height: 250px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.textStyle{
+    color: #ebf0d8;
+    /*text-shadow: 2px 2px 0px #917a46, -2px -2px #917a46;*/
+    font-family: "Undertale";
+    font-size: 26px;
+    word-wrap: break-word;
+    padding-top: 40px;
+    padding-left: 50px;
+
+
+    max-width: 1200px;
+
+}
+
+.nameStyle {
+    color: #bbffd9;
+    /*text-shadow: 2px 2px 0px #917a46, -2px -2px #917a46;*/
+    font-family: "Undertale";
+    font-size: 26px;
+    word-wrap: break-word;
+    padding-top: 10px;
+    margin-left: 170px;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 90px;
+    position: absolute;
+    top: 85%;
+    left: 15%;
+    right: 15%;
+}
+
+.buttons button {
+    color: #ebf0d8;
+    /*text-shadow: 2px 2px 0px #917a46, -2px -2px #917a46;*/
+
+    font-family: "Undertale";
+
+    text-align: left;
+    font-size: 26px;
+
+    padding-top: 100px;
+
+    /*position: absolute;*/
+    /*top: 87%;*/
+    /*left: 25%;*/
+
+    background-color: transparent;
+    border:none;
+}
+
+.buttons button:hover{
+    color: #ffffff;
+    text-shadow: 0 0 #1c1c1c;
+}
+
+.miniGame1 {
+    font-family: "Undertale";;
+    position: fixed;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 100px;
+}
+
+.miniGameHeader {
+    display: flex;
+    padding-top: 40px;
+}
+
+#game1Board {
+    padding-top: 150px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: center;
+
+}
+
+.game1ButtonStyle {
+
+    width: 200px;
+    height: 50px;
+    color: #bbffd9;
+    font-size: 26px;
+    text-align: center;
+}
+
+.game1ButtonStyle:hover {
+    color: white;
+}
+
+.game1StartButtonStyle {
+    border: none;
+    background: none;
+    color: #bbffd9;
+    width: 100px;
+    font-family: "Undertale";
+    font-size: 26px;
+    height: 40px;
+}
+
+.game1StartButtonStyle:hover{
+    color: white;
+
+}
+
+.game1TextStyle{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    color: #bbffd9;
+    font-size: 26px;
+}
+
+.game1TextBox {
+    position: absolute;
+    right:600px;
+    top: 250px;
+    width: 400px;
+    height: 100px;
+}
+
+.game1TextResultStyle {
+    border: 3px dashed #bbffd9;
+}
+
+.game1TextSpaceStyle {
+}
+
+.game1TitleStyle{
+
+    color: #bbffd9;
+    font-size: 26px;
+}
+
+.game1Delamein {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    right: 200px;
+    top: 100px;
+}
+
+.game1PhraseStyle {
+    margin-left: 400px;
+}
+
+
+
