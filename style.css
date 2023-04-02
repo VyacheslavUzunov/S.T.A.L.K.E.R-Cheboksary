@@ -34,14 +34,12 @@ body{
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    opacity: 0;
-    -webkit-transition: opacity 1s ease;
-    -moz-transition: opacity 1s ease;
-    -o-transition: opacity 1s ease;
-    transition: opacity 1s ease-in;
-    animation: ani 1s forwards;
+
 }
 
+.startVideo.move{
+    animation: ani 1s forwards;
+}
 
 @keyframes ani {
     0% {opacity: 0;}

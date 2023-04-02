@@ -14,12 +14,51 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
+let startVideo = document.getElementById('startVideo')
+let videoBlockTwo = document.getElementById('videoBlockTwo')
+startVideo.setAttribute('src', './video/Иваныч.mp4')
+
+const videoGo = (link, smooth = false) => {
+    if (smooth) {startVideo.hidden = true
+        setTimeout(atm = () => {
+            startVideo.hidden = false
+        }, 200)}
+    startVideo.setAttribute('src', `./video/${link}.mp4`)
+    startVideo.play()
+}
+
+let changeOption = true
+
+const ChangeVideo = (src, smooth = false) => {
+    startVideo.classList.remove('move')
+    videoBlockTwo.classList.remove('move')
+    if (changeOption) {
+        videoBlockTwo.hidden = true
+        startVideo.hidden = false
+        if (smooth) {
+            startVideo.classList.add('move')
+        }
+        startVideo.play()
+        videoBlockTwo.setAttribute('src', `./video/${src}.mp4`)
+    } else {
+        startVideo.hidden = true
+        videoBlockTwo.hidden = false
+        if (smooth) {
+            videoBlockTwo.classList.add('move')
+        }
+        videoBlockTwo.play()
+        startVideo.setAttribute('src', `./video/${src}.mp4`)
+    }
+    changeOption = !changeOption
+}
+
 // упрощение кода
 let startButton = document.getElementById('buttonId') // стартовая кнопка
 let textGame = document.getElementById('textId') // текст игры
 let bgImage = document.body.style //фон
-let startVideo = document.getElementById('startVideo')
 let boardName = document.getElementById('nameId')
+let videos = document.getElementById('videos')
+
 
 let btn1 = document.getElementById('buttonId2') // текст кнопок
 let btn2 = document.getElementById('buttonId3')
@@ -53,14 +92,7 @@ const stopAndStartVideo = (action) => {
     }
 }
 
-const videoGo = (link, smooth = false) => {
-    if (smooth) {startVideo.hidden = true
-    setTimeout(atm = () => {
-        startVideo.hidden = false
-    }, 200)}
-    startVideo.setAttribute('src', `./video/${link}`)
-    startVideo.play()
-}
+
 
 let timerId
 
@@ -124,20 +156,16 @@ let StartScene
 
 const gameWay = (way) => {
     if (way===1) {
-
         bgImage.backgroundImage = 'url("./img/Тени.png")'
         startButton.hidden = true // прячем стартовую кнопку (true - спрятать, false - показать)
-        startVideo.play()
         windowText.hidden = false
         textGame.hidden = false // показываем текст
         animateText('textId','1987г. Чебоксары. за 5 минут до взрыва...', 1, ()=>buttonsGraphic('Далее...'))
         shortSound('Чебоксары.ogg')
-
-
     } else if (way===2) {
         startVideo.hidden = false
         bgImage.backgroundImage = 'url("./img/Иваныч.png")'
-
+        ChangeVideo('Петрович', true)
         startVideo.play()
         animateText('textId','Эй, Петрович. Курнем?', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Иваныч'
@@ -145,76 +173,70 @@ const gameWay = (way) => {
 
     } else if (way===3) {
         bgImage.backgroundImage = 'url("./img/Петрович.png")'
-        startVideo.setAttribute('src', './video/Петрович.mp4')
-        startVideo.play()
+        ChangeVideo('Иваныч')
         animateText('textId','Ты че Иваныч берега попутал, курить? здесь?', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Петрович'
         Petr.play()
 
     } else if (way===4){
-        startVideo.setAttribute('src', './video/Иваныч.mp4')
-        startVideo.play()
+        ChangeVideo('Петрович')
         animateText('textId','Эх, Петрович, Петрович, я так сто раз делал и живые все!', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Иваныч'
         Ivan.play()
     } else if (way===5) {
-        startVideo.setAttribute('src', './video/Петрович.mp4')
-        startVideo.play()
+        ChangeVideo('Иваныч')
         animateText('textId','Иваныч было время раньше, эх, жизнь была', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Петрович'
         Petr.play()
     } else if (way===6) {
-        startVideo.setAttribute('src', './video/Иваныч.mp4')
-        startVideo.play()
+        ChangeVideo('Петрович')
         animateText('textId','И будет Петрович! Может по писюлику ебнем за здоровье?', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Иваныч'
         Ivan.play()
     } else if (way===7) {
-        startVideo.setAttribute('src', './video/Петрович.mp4')
-        startVideo.play()
+        ChangeVideo('Иваныч')
         animateText('textId','По писюлику можно, вот ты Иваныч, конечно, ого-го!', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Петрович'
         Petr.play()
     } else if (way===8) {
-        startVideo.setAttribute('src', './video/Иваныч.mp4')
-        startVideo.play()
+        ChangeVideo('Петрович')
         animateText('textId','Ща Петрович бутыль возму', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Иваныч'
         Ivan.play()
     } else if (way===9) {
-        startVideo.setAttribute('src', './video/Петрович.mp4')
-        startVideo.play()
+        ChangeVideo('Иваныч')
         animateText('textId','Давай-давай, неси святую', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Петрович'
         Petr.play()
     } else if (way===10) {
-        startVideo.setAttribute('src', './video/Иваныч.mp4')
-        startVideo.play()
+        bgImage.backgroundImage = 'url("./img/Иваныч.png")'
+        ChangeVideo('Выстрел')
         animateText('textId','Петрович ты... ЭЙ КТО ТАМ?', 1, ()=>{})
+        boardName.textContent = 'Иваныч'
+        Ivan.play()
         setTimeout(atm = () => {
             gameWay(++chooseWay)
         }, 3000)
-        boardName.textContent = 'Иваныч'
-        Ivan.play()
     } else if (way===11) {
-        videoGo('Выстрел.mp4')
+        ChangeVideo('СмертьИваныча')
         shortSound('Выстрел.mp3')
+        sh12.play()
+        sh12.volume = 0.4
+        boardName.textContent = 'Тень 1'
+        bgImage.backgroundImage = 'url("./img/СмертьИваныча1.png")'
         animateText('textId','Приконьчить пидоров!', 1, ()=>{})
         setTimeout(atm = () => {
             gameWay(++chooseWay)
         }, 2000)
-        sh12.play()
-        sh12.volume = 0.4
-        boardName.textContent = 'Тень 1'
-        bgImage.backgroundImage = 'url("./img/СмертьИваныча.png")'
+
     } else if (way===12) {
-        startVideo.setAttribute('src', './video/СмертьИваныча.mp4')
-        startVideo.play()
+        ChangeVideo('Сидорович')
         animateText('textId','Сам ты пидор, епта!', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Иваныч'
         Ivan.play()
         setTimeout(atm = () => {
             gameWay(startVideo.pause())
+
         }, 2000)
     } else if (way===13) {
         bgImage.backgroundImage = 'url("./img/Тени1.png")'
@@ -236,8 +258,7 @@ const gameWay = (way) => {
     } else if (way===16) {
         bgImage.backgroundImage = 'url("./img/Сидорович.png")'
         startVideo.hidden = false
-        startVideo.setAttribute('src', './video/Сидорович.mp4')
-        startVideo.play()
+        ChangeVideo('ТеньВопрос')
         animateText('textId','...', 1, ()=>buttonsGraphic('Далее...'))
     } else if (way===17) {
         boardName.textContent = 'Сидорович'
@@ -253,6 +274,7 @@ const gameWay = (way) => {
         }, 4000)
     } else if (way===19) {
         boardName.textContent = 'Тень 1'
+        ChangeVideo('СмертьСидоровича')
         startVideo.setAttribute('src', './video/ТеньВопрос.mp4')
         startVideo.play()
         shortSound('ТеньВопрос.ogg')
@@ -260,8 +282,7 @@ const gameWay = (way) => {
         bgImage.backgroundImage = 'url("./img/Сидорович.png")'
     } else if (way===20) {
         boardName.textContent = 'Сидорович'
-        startVideo.setAttribute('src', './video/СмертьСидоровича.mp4')
-        startVideo.play()
+        ChangeVideo('ГовноСидоровича3')
         shortSound('Сидор2.ogg')
         animateText('textId','Меченый! Какого черта?', 1, ()=>{})
         bgImage.backgroundImage = 'url("./img/СидоСпятил.png")'
@@ -271,8 +292,7 @@ const gameWay = (way) => {
         }, 2700)
     } else if (way===21) {
         boardName.textContent = 'Тень 1'
-        startVideo.setAttribute('src', './video/ГовноСидоровича3.mp4')
-        startVideo.play()
+        ChangeVideo('ТеньВопрос')
         bgImage.backgroundImage = 'url("./img/ТениСмертьСидора.png")'
         shortSound('ПукСидора.ogg')
         animateText('textId','...', 1, ()=>{})
@@ -282,31 +302,28 @@ const gameWay = (way) => {
 
     } else if (way===22) {
         boardName.textContent = 'Тень 1'
-        startVideo.setAttribute('src', './video/ТеньВопрос.mp4')
-        startVideo.play()
+        ChangeVideo('Пк')
         shortSound('Тень1.3.ogg')
         animateText('textId','Вытрите говно!', 1, ()=>buttonsGraphic('Далее...'))
 
     } else if (way===23) {
         bgImage.backgroundImage = 'url("./img/Тени.png")'
-        startVideo.hidden = true
+        videos.hidden = true
         animateText('textId','Новокузнецк. Наши дни', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = ''
         shortSound('Новокузнецк.ogg')
     } else if (way===24) {
-        startVideo.hidden = false
-        startVideo.setAttribute('src', './video/Пк.mp4')
-        startVideo.play()
+        videos.hidden = false
+        ChangeVideo('ПисьмоПк',true)
         animateText('textId','Какая соска, подумали вы', 1, ()=>buttonsGraphic('Попросить её поесть колбасы'))
 
     } else if (way===25) {
-
-        startVideo.setAttribute('src', './video/ПисьмоПк.mp4')
-        startVideo.play()
+        ChangeVideo('Вступительный ролик',true)
         animateText('textId','Письмо... Сидоровичу младшему', 1, ()=>buttonsGraphic('Открыть'))
-        bgImage.backgroundImage = 'url("./img/Doc-Зав1.png")'
+
     }  else if (way===26) {
-        startVideo.hidden = true
+        bgImage.backgroundImage = 'url("./img/Doc-Зав1.png")'
+        videos.hidden = true
         animateText('textId','Дааааа, папаша мой в губы не дул значит, а тут у нас что?', 1, ()=>buttonsGraphic('Открыть'))
     } else if (way===27) {
         bgImage.backgroundImage = 'url("./img/Doc-Экс.png")'
@@ -314,9 +331,8 @@ const gameWay = (way) => {
     }  else if (way===28) {
         animateText('textId','Нууууу… Отправляемся в Чебоксары!', 1, ()=>buttonsGraphic('Открыть'))
     } else if (way===29) {
-        startVideo.hidden = false
-        startVideo.setAttribute('src', './video/Вступительный ролик.mp4')
-        startVideo.play()
+        videos.hidden = false
+        ChangeVideo('Вокзал.mp4',true)
         animateText('textId','Нууууу… Отправляемся в Чебоксары!', 1, ()=>buttonsGraphic('Нажмите, чтобы пропустить'))
         windowText.hidden = true
         textGame.hidden = true
@@ -334,12 +350,11 @@ const gameWay = (way) => {
         animateText('textId','Вокзал', 1, ()=>buttonsGraphic('Далее...'))
     } else if (way===31) {
         startVideo.hidden = false
-        startVideo.setAttribute('src', './video/Вокзал.mp4')
-        startVideo.play()
+        ChangeVideo('ВантузВстреча1', true)
         animateText('textId','Надо найти проводника', 1, ()=>buttonsGraphic('Эй, мужик!'))
         bgImage.backgroundImage = 'url("./img/Вокзал.png")'
     } else if (way===32) {
-        videoGo('ВантузВстреча1.mp4', true)
+        ChangeVideo('Вокзал', true)
         musicVan.play()
         animateText('textId','Чего брат?', 1, ()=>buttonsGraphic('А кто тут провести в зону может?'))
     } else if (way===33) {
@@ -359,7 +374,6 @@ const gameWay = (way) => {
     } else if (way===39) {
         musicVan.pause()
         boardName.textContent = ''
-        videoGo('Вокзал.mp4', true)
         animateText('textId','Фрик походу...', 1, ()=>buttonsGraphic('Ага...'))
     }}
 
