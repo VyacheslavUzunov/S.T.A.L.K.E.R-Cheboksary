@@ -4,7 +4,9 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "react-scripts build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/VyacheslavUzunov/S.T.A.L.K.E.R-Cheboksary/issues"
   },
-  "homepage": "https://github.com/VyacheslavUzunov/S.T.A.L.K.E.R-Cheboksary#readme"
+  "homepage": "https://github.com/VyacheslavUzunov/S.T.A.L.K.E.R-Cheboksary",
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }

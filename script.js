@@ -53,6 +53,15 @@ const stopAndStartVideo = (action) => {
     }
 }
 
+const videoGo = (link, smooth = false) => {
+    if (smooth) {startVideo.hidden = true
+    setTimeout(atm = () => {
+        startVideo.hidden = false
+    }, 200)}
+    startVideo.setAttribute('src', `./video/${link}`)
+    startVideo.play()
+}
+
 let timerId
 
 function animateText(id, text, i, callback) {
@@ -109,6 +118,8 @@ let sh1 = LongSound('./mp3/Тень1Глеб.ogg')
 let sh12 = LongSound('./mp3/Тень1.2.ogg')
 let sid1 = LongSound('./mp3/Сидор1.ogg')
 let sid2 = LongSound('./mp3/Сидор2.ogg')
+let musicVan = LongSound('./mp3/ВантузМуз.mp3')
+let StartScene
 
 
 const gameWay = (way) => {
@@ -125,14 +136,15 @@ const gameWay = (way) => {
 
     } else if (way===2) {
         startVideo.hidden = false
-        bgImage.backgroundImage = 'url("./img/Петрович.png")'
+        bgImage.backgroundImage = 'url("./img/Иваныч.png")'
+
         startVideo.play()
         animateText('textId','Эй, Петрович. Курнем?', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Иваныч'
         Ivan.play()
 
     } else if (way===3) {
-        bgImage.backgroundImage = 'url("./img/Иваныч.png")'
+        bgImage.backgroundImage = 'url("./img/Петрович.png")'
         startVideo.setAttribute('src', './video/Петрович.mp4')
         startVideo.play()
         animateText('textId','Ты че Иваныч берега попутал, курить? здесь?', 1, ()=>buttonsGraphic('Далее...'))
@@ -185,8 +197,7 @@ const gameWay = (way) => {
         boardName.textContent = 'Иваныч'
         Ivan.play()
     } else if (way===11) {
-        startVideo.setAttribute('src', './video/Выстрел.mp4')
-        startVideo.play()
+        videoGo('Выстрел.mp4')
         shortSound('Выстрел.mp3')
         animateText('textId','Приконьчить пидоров!', 1, ()=>{})
         setTimeout(atm = () => {
@@ -216,7 +227,7 @@ const gameWay = (way) => {
         bgImage.backgroundImage = 'url("./img/Тени2.png")'
         animateText('textId','ЗА МОНОЛИТ! ЗА МОНОЛИТ!', 1, ()=>buttonsGraphic('Далее...'))
         boardName.textContent = 'Тень 2'
-        shortSound('Тень2Глеб.ogg')
+        shortSound('Тень2Глеб.og')
     } else if (way===15) {
         bgImage.backgroundImage = 'url("./img/Тени.png")'
         animateText('textId','Чернобыль. За месяц до наших дней…', 1, ()=>buttonsGraphic('Далее...'))
@@ -246,28 +257,28 @@ const gameWay = (way) => {
         startVideo.play()
         shortSound('ТеньВопрос.ogg')
         animateText('textId','Где меченый?', 1, ()=>buttonsGraphic('Далее...'))
-
+        bgImage.backgroundImage = 'url("./img/Сидорович.png")'
     } else if (way===20) {
         boardName.textContent = 'Сидорович'
         startVideo.setAttribute('src', './video/СмертьСидоровича.mp4')
-        bgImage.backgroundImage = 'url("./img/СидорСпятил.png")'
         startVideo.play()
         shortSound('Сидор2.ogg')
         animateText('textId','Меченый! Какого черта?', 1, ()=>{})
+        bgImage.backgroundImage = 'url("./img/СидоСпятил.png")'
         setTimeout(atm = () => {
             gameWay(gameWay(++chooseWay))
             shortSound('Выстрел.mp3')
         }, 2700)
     } else if (way===21) {
         boardName.textContent = 'Тень 1'
-        startVideo.setAttribute('src', './video/ГовноСидоровича.mp4')
+        startVideo.setAttribute('src', './video/ГовноСидоровича3.mp4')
         startVideo.play()
         bgImage.backgroundImage = 'url("./img/ТениСмертьСидора.png")'
         shortSound('ПукСидора.ogg')
         animateText('textId','...', 1, ()=>{})
         setTimeout(atm = () => {
             gameWay(gameWay(++chooseWay))
-        }, 3000)
+        }, 3900)
 
     } else if (way===22) {
         boardName.textContent = 'Тень 1'
@@ -293,19 +304,63 @@ const gameWay = (way) => {
         startVideo.setAttribute('src', './video/ПисьмоПк.mp4')
         startVideo.play()
         animateText('textId','Письмо... Сидоровичу младшему', 1, ()=>buttonsGraphic('Открыть'))
+        bgImage.backgroundImage = 'url("./img/Doc-Зав1.png")'
     }  else if (way===26) {
-
+        startVideo.hidden = true
         animateText('textId','Дааааа, папаша мой в губы не дул значит, а тут у нас что?', 1, ()=>buttonsGraphic('Открыть'))
     } else if (way===27) {
-        animateText('textId','Краковяк, так-так, посмотрим, полко… майо.. Крак.. Миклухо… Так… год рождение… пам-пам-пам… город Чебоксары…', 1, ()=>buttonsGraphic('Открыть'))
+        bgImage.backgroundImage = 'url("./img/Doc-Экс.png")'
+        animateText('textId','Краковяк, так-так, загуглим, полко… майо.. Крак.. Миклухо… Так… год рождение… пам-пам-пам… город Чебоксары…', 1, ()=>buttonsGraphic('Открыть'))
     }  else if (way===28) {
         animateText('textId','Нууууу… Отправляемся в Чебоксары!', 1, ()=>buttonsGraphic('Открыть'))
     } else if (way===29) {
+        startVideo.hidden = false
         startVideo.setAttribute('src', './video/Вступительный ролик.mp4')
         startVideo.play()
-        animateText('textId','Нууууу… Отправляемся в Чебоксары!', 1, ()=>buttonsGraphic('Открыть'))
+        animateText('textId','Нууууу… Отправляемся в Чебоксары!', 1, ()=>buttonsGraphic('Нажмите, чтобы пропустить'))
         windowText.hidden = true
         textGame.hidden = true
+
+        bgImage.backgroundImage = 'url("./img/Тени.png")'
+        StartScene = setTimeout(atm = () => {
+            startVideo.pause()
+        }, 18000)
+    } else if (way===30) {
+        clearTimeout(StartScene)
+        // очистить интервал
+        startVideo.hidden = true
+        windowText.hidden = false
+        textGame.hidden = false
+        animateText('textId','Вокзал', 1, ()=>buttonsGraphic('Далее...'))
+    } else if (way===31) {
+        startVideo.hidden = false
+        startVideo.setAttribute('src', './video/Вокзал.mp4')
+        startVideo.play()
+        animateText('textId','Надо найти проводника', 1, ()=>buttonsGraphic('Эй, мужик!'))
+        bgImage.backgroundImage = 'url("./img/Вокзал.png")'
+    } else if (way===32) {
+        videoGo('ВантузВстреча1.mp4', true)
+        musicVan.play()
+        animateText('textId','Чего брат?', 1, ()=>buttonsGraphic('А кто тут провести в зону может?'))
+    } else if (way===33) {
+        animateText('textId','Ну по теории вероятности провести может кто угодно, но тебе повезло, я лучший проводник!', 1, ()=>buttonsGraphic('Дааа, такое себе везение, ну неважно, тебя как кличут?'))
+    } else if (way===34) {
+        boardName.textContent = 'Bантуз'
+        animateText('textId','Вантуз моя кличка', 1, ()=>buttonsGraphic('Хех, и почему тебя так называют?'))
+    } else if (way===35) {
+        animateText('textId','В анусе бывает, что отверстие засоряется после выбросов и... ', 1, ()=>buttonsGraphic('Ты ебнутый, фу, ты педик что-ли?'))
+    } else if (way===36) {
+        animateText('textId','Эх, салага, ты про баб на зоне слышал?', 1, ()=>buttonsGraphic('Нет'))
+    } else if (way===37) {
+        animateText('textId','Ну вот и я не слышал! А ты сразу педик, просто по другому у нас здесь не получится', 1, ()=>buttonsGraphic('Слушай я наверно другого проводника поищу…'))
+    } else if (way===38) {
+        animateText('textId','Еже еже братик, но если тебе понадобиться опытный проводник, я буду ждать тебя тут', 1, ()=>buttonsGraphic('Ага...'))
+        bgImage.backgroundImage = 'url("./img/ВантузВокзал.png")'
+    } else if (way===39) {
+        musicVan.pause()
+        boardName.textContent = ''
+        videoGo('Вокзал.mp4', true)
+        animateText('textId','Фрик походу...', 1, ()=>buttonsGraphic('Ага...'))
     }}
 
 
