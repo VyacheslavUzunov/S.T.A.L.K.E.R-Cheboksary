@@ -374,7 +374,44 @@ const gameWay = (way) => {
     } else if (way===39) {
         musicVan.pause()
         boardName.textContent = ''
+        ChangeVideo('Бебра', true)
         animateText('textId','Фрик походу...', 1, ()=>buttonsGraphic('Ага...'))
+        bgImage.backgroundImage = 'url("./img/Вокзал.png")'
+    } else if (way===40) {
+        boardName.textContent = ''
+        animateText('textId','Хоть кто-то, но ни этот придурок', 1, ()=>buttonsGraphic('Ага...'))
+    } else if (way===41) {
+        animateText('textId','ИЩУ ПРОВОДНИКАА!', 1, ()=>buttonsGraphic('Ага...'))
+    } else if (way===42) {
+        ChangeVideo('Костер', true)
+        animateText('textId','5 косарей и я в деле', 1, ()=>buttonsGraphic('Ну а зовут тебя как? И как ты в деле?'))
+    } else if (way===43) {
+        animateText('textId','Ты мне за ответы денег не платишь', 1, ()=>buttonsGraphic('Ну выбора у меня толком нет. Договорились!'))
+    } else if (way===44) {
+        animateText('textId','Ты мне за ответы денег не платишь', 1, ()=>buttonsGraphic('Ну выбора у меня толком нет. Договорились!'))
+    } else if (way===45) {
+        animateText('textId','Загрузка бебры', 1, ()=>buttonsGraphic('...'))
+    } else if (way===46) {
+        ChangeVideo('БебраКостер', )
+        animateText('textId','Z… Z… Z…', 1, ()=>buttonsGraphic('...'))
+    } else if (way===47) {
+        animateText('textId','шелест', 1, ()=>buttonsGraphic('...'))
+    } else if (way===48) {
+        animateText('textId','Что? А… z… z…', 1, ()=>buttonsGraphic('...'))
+    } else if (way===49) {
+        animateText('textId','шелест', 1, ()=>buttonsGraphic('...'))
+    } else if (way===50) {
+        animateText('textId','Да Что там такое?', 1, ()=>buttonsGraphic('...'))
+    } else if (way===51) {
+        animateText('textId','Тихо ты', 1, ()=>buttonsGraphic('...'))
+        bgImage.backgroundImage = 'url("./img/Вокзал.png")'
+    } else if (way===52) {
+        ChangeVideo('БебраСмерть', )
+        animateText('textId','Не пойму то ли бюрер, то ли брамин (Кликните для ознакомления)', 1, ()=>buttonsGraphic('...'))
+    } else if (way===53) {
+        videos.hidden = true
+
+        animateText('textId','Не пойму то ли бюрер, то ли брамин (Кликните для ознакомления)', 1, ()=>buttonsGraphic('...'))
     }}
 
 
