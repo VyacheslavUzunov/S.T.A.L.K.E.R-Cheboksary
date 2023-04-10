@@ -71,7 +71,7 @@ body{
 }
 
 .container {
-     background: url("./img/textArea.png") no-repeat center;
+    background: url("./img/textArea1.png") no-repeat center;
     background-size: cover;
     /* это будет изображение, если надо, размер где-то 200 на 600
 
@@ -87,9 +87,21 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    animation-duration: 2s;
-
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.7, 0.1, 1, 0.1);
+    animation-name: slideIn;
 }
+
+@keyframes slideIn {
+    from {
+        margin-right: 100%;
+    }
+
+    to {
+        margin-right: 0%;
+    }
+}
+
 
 .startButtonStyle:hover{ /*hover - это то, что будет происходить с кнопкой при наведении*/
     color: #99e550;

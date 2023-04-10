@@ -3,7 +3,7 @@ let counter = 0
 //это, чтобы останавливать анимацию !тест
 let timerID
 
-let chooseWay = 0
+let chooseWay = 29
 
 let pik1 = new Audio('./mp3/klick.mp3')
 pik1.volume = 0.1
@@ -13,6 +13,8 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
+
+
 
 let startVideo = document.getElementById('startVideo')
 let videoBlockTwo = document.getElementById('videoBlockTwo')
@@ -93,6 +95,10 @@ const stopAndStartVideo = (action) => {
 }
 
 
+windowText.addEventListener("animationend", e = () => {
+    let textArea = new Audio('./mp3/textAreaSound2.mp3')
+    textArea.play();
+});
 
 let timerId
 
@@ -150,6 +156,7 @@ let sh1 = LongSound('./mp3/Тень1Глеб.ogg')
 let sh12 = LongSound('./mp3/Тень1.2.ogg')
 let sid1 = LongSound('./mp3/Сидор1.ogg')
 let sid2 = LongSound('./mp3/Сидор2.ogg')
+let sidMus = LongSound('./mp3/МузлоСидор.mp3')
 let musicVan = LongSound('./mp3/ВантузМуз.mp3')
 let StartScene
 
@@ -258,6 +265,8 @@ const gameWay = (way) => {
     } else if (way===16) {
         bgImage.backgroundImage = 'url("./img/Сидорович.png")'
         startVideo.hidden = false
+        sidMus.volume = 0.1
+        sidMus.play()
         ChangeVideo('ТеньВопрос')
         animateText('textId','...', 1, ()=>buttonsGraphic('Далее...'))
     } else if (way===17) {
@@ -267,6 +276,7 @@ const gameWay = (way) => {
         sid1.volume = 0.2
 
     } else if (way===18) {
+        sidMus.pause()
         animateText('textId','...', 1, ()=>{})
         shortSound('Топот.mp3')
         setTimeout(atm = () => {
@@ -389,29 +399,108 @@ const gameWay = (way) => {
         animateText('textId','Ты мне за ответы денег не платишь', 1, ()=>buttonsGraphic('Ну выбора у меня толком нет. Договорились!'))
     } else if (way===44) {
         animateText('textId','Ты мне за ответы денег не платишь', 1, ()=>buttonsGraphic('Ну выбора у меня толком нет. Договорились!'))
+        bgImage.backgroundImage = 'url("./img/Тени.png")'
     } else if (way===45) {
         animateText('textId','Загрузка бебры', 1, ()=>buttonsGraphic('...'))
     } else if (way===46) {
-        ChangeVideo('БебраКостер', )
+        videos.hidden = true
+        ChangeVideo('БебраКостер', true)
         animateText('textId','Z… Z… Z…', 1, ()=>buttonsGraphic('...'))
     } else if (way===47) {
+        videos.hidden = false
         animateText('textId','шелест', 1, ()=>buttonsGraphic('...'))
     } else if (way===48) {
+        videos.hidden = true
         animateText('textId','Что? А… z… z…', 1, ()=>buttonsGraphic('...'))
     } else if (way===49) {
+        videos.hidden = false
         animateText('textId','шелест', 1, ()=>buttonsGraphic('...'))
     } else if (way===50) {
+        videos.hidden = true
         animateText('textId','Да Что там такое?', 1, ()=>buttonsGraphic('...'))
     } else if (way===51) {
+        videos.hidden = false
         animateText('textId','Тихо ты', 1, ()=>buttonsGraphic('...'))
-        bgImage.backgroundImage = 'url("./img/Вокзал.png")'
+
     } else if (way===52) {
-        ChangeVideo('БебраСмерть', )
+        ChangeVideo('БебраСмерть')
         animateText('textId','Не пойму то ли бюрер, то ли брамин (Кликните для ознакомления)', 1, ()=>buttonsGraphic('...'))
     } else if (way===53) {
-        videos.hidden = true
-
+        ChangeVideo('Гл5б', true)
+        setTimeout(atm = () => {
+            shortSound('ТрескБашки.mp3')
+        }, 1000)
+        setTimeout(atm = () => {
+            shortSound('Тень2Глеб.ogg')
+        }, 2000)
+        setTimeout(atm = () => {
+            gameWay(++chooseWay)
+        }, 3000)
         animateText('textId','Не пойму то ли бюрер, то ли брамин (Кликните для ознакомления)', 1, ()=>buttonsGraphic('...'))
+    } else if (way===54) {
+        videos.hidden = true
+        animateText('textId','СУКА БЛЯТЬ!', 1, ()=>buttonsGraphic('...'))
+        boardName=''
+    } else if (way===55) {
+        animateText('textId','БЕЖАТЬ СУКА, БЕЖАТЬ', 1, ()=>buttonsGraphic('...'))
+    } else if (way===56) {
+        animateText('textId','БЕЖАТЬ СУКА, БЕЖАТЬ', 1, ()=>buttonsGraphic('...'))
+    } else if (way===57) {
+        animateText('textId','падение', 1, ()=>buttonsGraphic('...'))
+    } else if (way===58) {
+        videos.hidden = false
+        boardName='Вантуз'
+        ChangeVideo('Пробакала', true)
+        animateText('textId','Успокойся… Эти твари чувствуют страх и запах фикалий', 1, ()=>buttonsGraphic('Какого? Что ты тут делаешь?'))
+    } else if (way===59) {
+        animateText('textId','Не доверяю дилетантам', 1, ()=>buttonsGraphic('Э…'))
+    } else if (way===60) {
+        ChangeVideo('глебговна', true)
+        animateText('textId','*Засовывает палец в говно и пробует *', 1, ()=>{})
+        setTimeout(atm = () => {
+            gameWay(++chooseWay)
+        }, 3000)
+    } else if (way===61) {
+        ChangeVideo('Гл5б', true)
+        animateText('textId','Кал свежий, похоже это бюрер или брамин...', 1, ()=>{})
+        setTimeout(atm = () => {
+            gameWay(++chooseWay)
+        }, 5000)
+    } else if (way===62) {
+        ChangeVideo('Гл5б', true)
+        animateText('textId','Да, определенно бюрер или брамин', 1, ()=>buttonsGraphic('Какой нахуй брамин, надо вернуться в лагерь?'))
+    } else if (way===63) {
+        animateText('textId','Ты со мной разговариваешь?', 1, ()=>buttonsGraphic('Там по лесу ходит огромная хуета, я хочу остаться живым'))
+    } else if (way===64) {
+        animateText('textId','Ох, расскажу тебе и историю', 1, ()=>buttonsGraphic('Какая нахуй история выводи меня отсюда '))
+    } else if (way===65) {
+        animateText('textId','Так почему ты здесь?', 1, ()=>buttonsGraphic('Я искал... как его Маойра Краковяк...'))
+    } else if (way===66) {
+        animateText('textId','...', 1, ()=>buttonsGraphic('Че с тобой?'))
+    } else if (way===67) {
+        animateText('textId','Это имя... оно...', 1, ()=>buttonsGraphic('Что, блять, с ним?'))
+    } else if (way===68) {
+        animateText('textId','Прости друг', 1, ()=>buttonsGraphic('С хуя ли?'))
+    } else if (way===69) {
+        animateText('textId','шприц', 1, ()=>buttonsGraphic('С хуя ли?'))
+    } else if (way===70) {
+        animateText('textId','Ах ты сук…', 1, ()=>buttonsGraphic('С хуя ли?'))
+    } else if (way===71) {
+        animateText('textId','Пометка', 1, ()=>buttonsGraphic('С хуя ли?'))
+    } else if (way===72) {
+        animateText('textId','4 часа спустя', 1, ()=>buttonsGraphic('С хуя ли?'))
+    } else if (way===73) {
+        animateText('textId','Где я?', 1, ()=>buttonsGraphic('Где я?'))
+    } else if (way===74) {
+        animateText('textId','Проснитесь и пойте мистер Сидорович', 1, ()=>buttonsGraphic('Кто нахуй?'))
+    } else if (way===75) {
+        animateText('textId','Успокойся далбоеб, это я — вантуз', 1, ()=>buttonsGraphic('У меня похоже галюны начались после твоего укола сука'))
+    } else if (way===76) {
+        animateText('textId','Не-не-не, похоже на пси излучение', 1, ()=>buttonsGraphic('Да какое блять пси… ладно похуй, где я? верни меня назад в лагерь'))
+    } else if (way===77) {
+        animateText('textId','Поздно уже дружок заднюю давать, я перенес тебя в бар 100 БАСТУРМЕН!', 1, ()=>buttonsGraphic('Не может быть. Я не верю'))
+    } else if (way===78) {
+        animateText('textId','Сам посмотри!', 1, ()=>buttonsGraphic('Не может быть. Я не верю'))
     }}
 
 
