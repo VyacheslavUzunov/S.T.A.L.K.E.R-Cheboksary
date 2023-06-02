@@ -3,7 +3,7 @@ let counter = 0
 //это, чтобы останавливать анимацию !тест
 let timerID
 
-let chooseWay = 26
+let chooseWay = 0
 
 let pik1 = new Audio('./mp3/klick.mp3')
 pik1.volume = 0.1
