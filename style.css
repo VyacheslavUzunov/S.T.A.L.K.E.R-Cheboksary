@@ -6,7 +6,7 @@
 }
 
 body{
-    background: url("./img/Тени.png") no-repeat center center fixed; /*Стартовое изображение*/
+    background: url("./img/хуй.png") no-repeat center center fixed; /*Стартовое изображение*/
     background-size: cover;
     margin: 0;
     -webkit-transition: background 1s ease; /*1 секунда - это скорость смены заднего фона*/
