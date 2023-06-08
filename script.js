@@ -115,7 +115,7 @@ function animateText(id, text, i, callback) {
         callback()
         return
     };
-    timerId = setTimeout("animateText('" + id + "','" + text + "','" + i + "'," + callback + ")", 30);
+    timerId = setTimeout(() => animateText(text,i), 30);
     windowText.onclick = () => {
         clearTimeout(timerId)
         document.getElementById(id).innerHTML = text
@@ -126,7 +126,7 @@ function animateText(id, text, i, callback) {
 }
 
 const LongSound = (link) => {
-    let soundVar = new Audio(link)
+    let soundVar = new Audio(`./mp3/${link}`)
     return soundVar
 }
 
