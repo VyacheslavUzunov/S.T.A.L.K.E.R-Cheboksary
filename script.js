@@ -103,7 +103,7 @@ windowText.addEventListener("animationend", e = () => {
 let timerId
 
 function animateText(id, text, i, callback) {
-    if(i==1){
+    if (i == 1) {
         pik1.play();
         document.getElementById(id).innerHTML = ''
         clearTimeout(timerId)
@@ -114,15 +114,15 @@ function animateText(id, text, i, callback) {
         pik1.pause()
         callback()
         return
-    };
-    timerId = setTimeout(() => animateText(text,i), 30);
+    }
+    ;
+    timerId = setTimeout("animateText('" + id + "','" + text + "','" + i + "'," + callback + ")", 30);
     windowText.onclick = () => {
         clearTimeout(timerId)
         document.getElementById(id).innerHTML = text
         pik1.pause()
         callback()
     }
-
 }
 
 const LongSound = (link) => {
