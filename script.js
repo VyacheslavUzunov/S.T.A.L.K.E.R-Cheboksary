@@ -233,7 +233,7 @@ const gameWay = (way) => {
         sh12.volume = 0.4
         boardName.textContent = 'Тень 1'
         bgImage.backgroundImage = 'url("./img/СмертьИваныча1.png")'
-        animateText('textId','Приконьчить пидоров!', 1, ()=>{})
+        animateText('textId','Приконьчить пидоров сучаков глебов!', 1, ()=>{})
         setTimeout(atm = () => {
             gameWay(++chooseWay)
         }, 2000)
