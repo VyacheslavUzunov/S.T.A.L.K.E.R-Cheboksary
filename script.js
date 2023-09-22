@@ -126,7 +126,7 @@ function animateText(id, text, i, callback) {
 }
 
 const LongSound = (link) => {
-    let soundVar = new Audio(`./mp3/${link}`)
+    let soundVar = new Audio(link)
     return soundVar
 }
 
@@ -233,7 +233,7 @@ const gameWay = (way) => {
         sh12.volume = 0.4
         boardName.textContent = 'Тень 1'
         bgImage.backgroundImage = 'url("./img/СмертьИваныча1.png")'
-        animateText('textId','Приконьчить пидоров сучаков глебов!', 1, ()=>{})
+        animateText('textId','Приконьчить пидоров!', 1, ()=>{})
         setTimeout(atm = () => {
             gameWay(++chooseWay)
         }, 2000)
